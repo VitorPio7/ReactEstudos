@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: 'auth', element: <Authentication />
+        path: '/auth?mode=login', element: <Authentication />
       },
       {
         path: 'events',
