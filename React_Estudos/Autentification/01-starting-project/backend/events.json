@@ -1,12 +1,1 @@
-{
-  "events": [
-    {
-      "title": "A new event",
-      "image": "https://cdn.muenchen-p.de/fl_progressive,q_65/.imaging/stk/responsive/teaser300/dms/va-2016/muenchner-christkindlmarkt/christkindlmarkt-marienplat-logo-hp/document/christkindlmarkt-marienplat-logo-hp.jpg",
-      "date": "2022-10-01",
-      "description": "Some awesome event!",
-      "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
-    }
-  ],
-  "users": []
-}
+{"events":[{"title":"react course 2","image":"https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fevent&psig=AOvVaw0DOS7sOZR3gMVf3lIX6GCR&ust=1740608642771000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCKDqvNDu34sDFQAAAAAdAAAAABAE","date":"2001-01-05","description":"bla bla bla","id":"7249327e-b687-4f3d-a932-e938291b4c05"}],"users":[{"email":"vitorvpio60@gmail.com","password":"$2a$12$HtmDJENtwyxAmWlYdoUmXu3ETBYwyucmj7kurq8EoZhecgL33Si62","id":"d86aa896-32e4-4889-99a0-3998f148a622"},{"email":"vitordobaba@gmail.com","password":"$2a$12$uz8qA2GGYQ9PBeXgXu/mVOfmILVWDSOFixP7vzVYhPtVF6PPx5GvS","id":"817a0d29-d0fa-4dbf-8725-de1804c42fcd"}]}

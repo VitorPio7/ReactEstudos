@@ -1,10 +1,11 @@
-import { Outlet, useNavigation } from 'react-router-dom';
+import { Outlet, useLoaderData, useNavigation, useSubmit } from 'react-router-dom';
 
 import MainNavigation from '../components/MainNavigation';
 
 function RootLayout() {
   // const navigation = useNavigation();
-
+  const token = useLoaderData();
+  const submit = useSubmit();
   return (
     <>
       <MainNavigation />
