@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { getAuthToken as myToken, checkAuthLoader } from './util/auth';
+import { tokenLoader as myToken, checkAuthLoader } from './util/auth';
 import EditEventPage from './pages/EditEvent';
 import ErrorPage from './pages/Error';
 import EventDetailPage, {

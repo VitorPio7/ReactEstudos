@@ -13,11 +13,12 @@ function AuthForm() {
     <>
       <Form method="post" className={classes.form}>
         <h1>{isLogin ? 'Log in' : 'Create a new user'}</h1>
-        {data?.error && <ul>
-          {Object.values(data.error).map((error) => {
+        {data?.errors && <ul>
+          {Object.values(data.errors).map((error) => {
             return <li key={error}>{error}</li>
           })}
         </ul>}
+        {data?.message && <p>{data.message}</p>}
         <p>
           <label htmlFor="email">Email</label>
           <input id="email" type="email" name="email" required />
