@@ -6,7 +6,7 @@ export async function fetchEvents({ signal, searchTerm }) {
     if (searchTerm) {
         url += '?search=' + searchTerm;
     }
-    const response = await fetch(url);
+    const response = await fetch(url, { signal: signal });
     if (!response.ok) {
         const error = new Error('An error occurred while fetching the events');
         error.code = response.status;
@@ -50,4 +50,17 @@ export async function fetchSelectableImages({ signal }) {
     const { images } = await response.json();
 
     return images;
+}
+export async function fetchEventById({ signal, term }) {
+    const response = await fetch("http://localhost:3000/events" + "/" + term, { signal: signal });
+    if (!response.ok) {
+        const error = new Error('An error occurred while fetching the events');
+        error.code = response.status;
+        error.info = await response.json();
+        throw error;
+    }
+
+    const { event } = await response.json();
+
+    return event;
 }
