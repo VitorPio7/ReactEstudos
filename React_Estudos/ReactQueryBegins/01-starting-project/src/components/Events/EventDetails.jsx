@@ -1,8 +1,9 @@
-import { Link, Outlet,Navigate } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { fetchSelectableImages,fetchEventById } from '../../util/http.js';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import Header from '../Header.jsx';
 import LoadingIndicator from '../UI/LoadingIndicator.jsx';
+import ErrorBlock from '../UI/ErrorBlock.jsx';
 import { useNavigate, useParams } from 'react-router';
 import {deleteEvent} from '../../util/http.js';
 import { queryClient } from '../../util/http.js';
@@ -35,6 +36,9 @@ export default function EventDetails() {
 
   function handleDelite() {
     deleteMutation.mutate({id:term})
+  }
+  if(isError){
+    return <ErrorBlock title="Failed to load event" error={error.info?.message|| 'Failed to fetch event data, please try again later.'} />
   }
   return (
     <>
