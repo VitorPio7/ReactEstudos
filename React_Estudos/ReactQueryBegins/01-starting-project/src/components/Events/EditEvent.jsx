@@ -29,7 +29,7 @@ export default function EditEvent() {
       queryClient.invalidateQueries(['events',params.id])
     }
   })
-  use
+  
   function handleSubmit(formData) {
     mutate({id:params.id,event:formData});
     navigate('../')
