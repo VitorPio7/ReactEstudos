@@ -1,7 +1,10 @@
 import { QueryClient } from '@tanstack/react-query';
+
 export const queryClient = new QueryClient();
+
 export async function fetchEvents({ signal, searchTerm, max }) {
     let url = 'http://localhost:3000/events';
+
     if (searchTerm && max) {
         url += '?search=' + searchTerm + '&max=' + max;
     } else if (searchTerm) {
@@ -9,7 +12,9 @@ export async function fetchEvents({ signal, searchTerm, max }) {
     } else if (max) {
         url += '?max=' + max
     }
+
     const response = await fetch(url, { signal: signal });
+
     if (!response.ok) {
         const error = new Error('An error occurred while fetching the events');
         error.code = response.status;
@@ -22,21 +27,25 @@ export async function fetchEvents({ signal, searchTerm, max }) {
     return events;
 }
 
+
 export async function createNewEvent(eventData) {
-    const response = await fetch('http://localhost:3000/events', {
+    const response = await fetch(`http://localhost:3000/events`, {
         method: 'POST',
+        body: JSON.stringify(eventData),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify(eventData)
-    })
+    });
+
     if (!response.ok) {
         const error = new Error('An error occurred while creating the event');
         error.code = response.status;
         error.info = await response.json();
         throw error;
     }
+
     const { event } = await response.json();
+
     return event;
 }
 
@@ -54,10 +63,12 @@ export async function fetchSelectableImages({ signal }) {
 
     return images;
 }
-export async function fetchEventById({ signal, term }) {
-    const response = await fetch("http://localhost:3000/events" + "/" + term, { signal: signal });
+
+export async function fetchEvent({ id, signal }) {
+    const response = await fetch(`http://localhost:3000/events/${id}`, { signal });
+
     if (!response.ok) {
-        const error = new Error('An error occurred while fetching the events');
+        const error = new Error('An error occurred while fetching the event');
         error.code = response.status;
         error.info = await response.json();
         throw error;
@@ -67,6 +78,8 @@ export async function fetchEventById({ signal, term }) {
 
     return event;
 }
+
+
 export async function deleteEvent({ id }) {
     const response = await fetch(`http://localhost:3000/events/${id}`, {
         method: 'DELETE',
@@ -81,6 +94,7 @@ export async function deleteEvent({ id }) {
 
     return response.json();
 }
+
 export async function updateEvent({ id, event }) {
     const response = await fetch(`http://localhost:3000/events/${id}`, {
         method: 'PUT',

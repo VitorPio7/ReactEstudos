@@ -145,7 +145,7 @@ app.put('/events/:id', async (req, res) => {
   await fs.writeFile('./data/events.json', JSON.stringify(events));
 
   setTimeout(() => {
-    res.json({ event: events[eventIndex] });
+    return res.json({ event: events[eventIndex] });
   }, 1000);
 });
 

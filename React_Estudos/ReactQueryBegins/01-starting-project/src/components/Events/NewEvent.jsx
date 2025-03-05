@@ -1,39 +1,51 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
+
 import Modal from '../UI/Modal.jsx';
 import EventForm from './EventForm.jsx';
 import { createNewEvent } from '../../util/http.js';
 import ErrorBlock from '../UI/ErrorBlock.jsx';
 import { queryClient } from '../../util/http.js';
+
 export default function NewEvent() {
   const navigate = useNavigate();
-  
-   const {mutate,isPending,isError,error} = useMutation({
-    mutationFn:createNewEvent,
-    onSuccess:()=>{
-      queryClient.invalidateQueries({querKey: ["events"]})
-      navigate("/events")
-    } 
-  })
+
+  const { mutate, isPending, isError, error } = useMutation({
+    mutationFn: createNewEvent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['events'] });
+      navigate('/events');
+    },
+  });
+
   function handleSubmit(formData) {
-    mutate({event:formData})
+    mutate({ event: formData });
   }
 
   return (
     <Modal onClose={() => navigate('../')}>
-      {isPending && <p>Creating event...</p>}
       <EventForm onSubmit={handleSubmit}>
-        <>
-          <Link to="../" className="button-text" disable={!isPending} >
-            Cancel
-          </Link>
-          <button type="submit" className="button"  disable={!isPending} >
-            Create
-          </button>
-        </>
+        {isPending && 'Submitting...'}
+        {!isPending && (
+          <>
+            <Link to="../" className="button-text">
+              Cancel
+            </Link>
+            <button type="submit" className="button">
+              Create
+            </button>
+          </>
+        )}
       </EventForm>
-      {isError && <ErrorBlock title="An error occurred" 
-      message={error.info?.message||'Failed to create event.'} />}
+      {isError && (
+        <ErrorBlock
+          title="Failed to create event"
+          message={
+            error.info?.message ||
+            'Failed to create event. Please check your inputs and try again later.'
+          }
+        />
+      )}
     </Modal>
   );
 }
