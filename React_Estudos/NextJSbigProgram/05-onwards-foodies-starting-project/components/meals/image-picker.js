@@ -24,8 +24,8 @@ export default function ImagePicker({ label, name }) {
 
     fileReader.onload = () => {
       setPickedImage(fileReader.result);
+   
     };
-
     fileReader.readAsDataURL(file);
   }
 
