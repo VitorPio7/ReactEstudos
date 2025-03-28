@@ -20,6 +20,7 @@ export async function saveMeal(meal) {
   meal.instructions = xss(meal.instructions);
 
   const extension = meal.image.name.split('.').pop();
+  console.log(extension)
   const fileName = `${meal.slug}.${extension}`;
 
   const stream = fs.createWriteStream(`public/images/${fileName}`);

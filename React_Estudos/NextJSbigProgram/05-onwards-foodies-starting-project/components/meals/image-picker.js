@@ -26,7 +26,7 @@ export default function ImagePicker({ label, name }) {
       setPickedImage(fileReader.result);
    
     };
-    fileReader.readAsDataURL(file);
+    fileReader.readAsDataURL(file); //transform into blob
   }
 
   return (
