@@ -18,7 +18,7 @@ export default function MealItem({ title, slug, image, summary, creator }) {
       <div className={classes.content}>
         <p className={classes.summary}>{summary}</p>
         <div className={classes.actions}>
-          <Link href={`/meals/${slug}`}>View Details</Link>
+          <Link href={`https://vitorpio-nextjs-demo-users-image.s3.us-east-2.amazonaws.com/${image}`}>View Details</Link>
         </div>
       </div>
     </article>

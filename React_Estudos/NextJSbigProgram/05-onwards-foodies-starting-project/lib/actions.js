@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from "next/cache";
 import { saveMeal } from "./meals";
 import { redirect } from 'next/navigation';
 
@@ -26,5 +27,6 @@ export async function shareMeal(prevValue,formData){/*quando se utiliza o useFor
    throw new {message:"There was an error on sending the form"}
   }
   await saveMeal(meal);
+  revalidatePath('/meals')
   redirect('/meals')
  }
