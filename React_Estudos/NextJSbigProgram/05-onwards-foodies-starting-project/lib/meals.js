@@ -25,7 +25,6 @@ export async function saveMeal(meal) {
   const extension = meal.image.name.split('.').pop();
   console.log(extension)
   const fileName = `${meal.slug}.${extension}`;
-
   // const stream = fs.createWriteStream(`public/images/${fileName}`);
   // stream.write(Buffer.from(bufferedImage), (error) => {
   //   if (error) {
@@ -34,7 +33,7 @@ export async function saveMeal(meal) {
   // });
   const bufferedImage = await meal.image.arrayBuffer();
   s3.putObject({
-    Bucket: 'maxschwarzmueller-nextjs-demo-users-image',
+    Bucket: 'vitorpio-nextjs-demo-users-image',
     Key: fileName,
     Body: Buffer.from(bufferedImage),
     ContentType: meal.image.type,
