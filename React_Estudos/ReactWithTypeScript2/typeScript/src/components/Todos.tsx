@@ -7,7 +7,7 @@
 // }
 // const Todos = (props:Props)=>{
 //     return <ul>{props.children}</ul>
-// }
+//this is }
 
 // export default Todos;
 type Props ={
