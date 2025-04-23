@@ -1,5 +1,6 @@
  import {ReactNode} from "react";
- import Todo from '../models/todo'
+ import Todo from '../models/todo';
+ import Lists from "./Lists";
 // type Props = {
 //     items:number[];
 //     children?:ReactNode;
@@ -15,6 +16,7 @@ type Props ={
 }
 export default function Todos(props:Props){
     return <ul>{props.items.map((item)=>
-              <li key={item.id}>{item.text}</li>)}
+            <Lists key={item.id}>{item.text}</Lists>
+              )}
            </ul>
 }
