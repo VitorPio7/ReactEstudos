@@ -5,7 +5,7 @@ function App() {
   return <main>
     {/* <Input id="name" label="Your name" type="text"/>
     <Input id="age" label="Your age" type="text"/> */}
-    <Container as={Button}/> /*é possivel passar um elemento */
+    <Container as={Button}>Click me</Container> /*é possivel passar um elemento */
   </main>;
 }
 
